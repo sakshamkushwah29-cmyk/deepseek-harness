@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐾 Virtual Pet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🐾 Virtual Pet</h1>
+      <div class="pet-name" id="petName">Name your pet!</div>
+    </header>
+
+    <main>
+      <div class="pet-area">
+        <div class="pet" id="pet">
+          <div class="pet-sprite" id="petSprite">🐱</div>
+          <div class="speech-bubble" id="speechBubble"></div>
+        </div>
+        <div class="pet-status" id="petStatus">
+          <div class="stat">
+            <span class="stat-label">♥</span>
+            <div class="stat-bar"><div class="stat-fill" id="hungerFill"></div></div>
+            <span class="stat-value" id="hungerValue">100</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">⚡</span>
+            <div class="stat-bar"><div class="stat-fill" id="energyFill"></div></div>
+            <span class="stat-value" id="energyValue">100</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">😊</span>
+            <div class="stat-bar"><div class="stat-fill" id="happinessFill"></div></div>
+            <span class="stat-value" id="happinessValue">100</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">🧹</span>
+            <div class="stat-bar"><div class="stat-fill" id="cleanFill"></div></div>
+            <span class="stat-value" id="cleanValue">100</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="action-btn feed" id="feedBtn" title="Feed (costs 5🪙)">
+          🍎 Feed
+        </button>
+        <button class="action-btn play" id="playBtn" title="Play (costs 10🪙)">
+          🎮 Play
+        </button>
+        <button class="action-btn sleep" id="sleepBtn" title="Sleep (restores energy)">
+          😴 Sleep
+        </button>
+        <button class="action-btn clean" id="cleanBtn" title="Clean (costs 3🪙)">
+          🧼 Clean
+        </button>
+        <button class="action-btn treat" id="treatBtn" title="Treat (costs 15🪙, big happiness boost)">
+          🍰 Treat
+        </button>
+      </div>
+
+      <div class="currency">
+        <span id="coins">🪙 50</span>
+        <span id="level">Level 1</span>
+        <span id="xp">XP: 0/100</span>
+      </div>
+
+      <div class="log" id="log"></div>
+    </main>
+
+    <footer>
+      <p>Your pet is saved automatically in localStorage. Refresh anytime!</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

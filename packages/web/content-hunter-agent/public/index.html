@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Hunter Agent | DeepSeek Harness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- TOP NAVIGATION BAR -->
+    <header class="top-nav">
+      <div class="brand">
+        <div class="logo-badge">
+          <span class="logo-icon">⚡</span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">CONTENT HUNTER <span class="badge-harness">HARNESS</span></div>
+          <div class="brand-sub">Instagram Video & Trust Engine • Wedding & Executive Filmmaker</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="status-indicator" id="connectionStatusBadge">
+          <span class="pulse-dot"></span>
+          <span id="connectionStatusText">Local Knowledge Engine</span>
+        </div>
+
+        <button class="btn btn-secondary" id="openSettingsBtn">
+          <span class="btn-icon">⚙️</span> API Config
+        </button>
+
+        <button class="btn btn-primary" id="quickHuntBtn">
+          <span class="btn-icon">⚡</span> Hunt Fresh Ideas
+        </button>
+      </div>
+    </header>
+
+    <!-- PERSONA HERO BANNER -->
+    <section class="persona-banner">
+      <div class="persona-identity">
+        <div class="persona-avatar">🎥</div>
+        <div class="persona-details">
+          <div class="persona-badge-group">
+            <span class="pill pill-gold">Entrepreneur</span>
+            <span class="pill pill-cyan">"I Shoot & Edit Videos"</span>
+            <span class="pill pill-purple">One Long Hold</span>
+            <span class="pill pill-green">5 Posts/Wk Middle Layer</span>
+          </div>
+          <p class="persona-motto">
+            <em>"I don't sell. I just educate, spread knowledge, information, and fun. No cheap or fake promises."</em>
+          </p>
+        </div>
+      </div>
+
+      <div class="persona-kpis">
+        <div class="kpi-item">
+          <div class="kpi-label">Pacing Signature</div>
+          <div class="kpi-val">One Long Hold</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-label">Audience Focus</div>
+          <div class="kpi-val">Couples & Founders</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-label">Primary Layer</div>
+          <div class="kpi-val text-cyan">Middle (Trust)</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-label">Memories Active</div>
+          <div class="kpi-val" id="memoryCount">5 Rules</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="main-tabs">
+      <button class="tab-btn active" data-tab="tab-hunter">
+        <span class="tab-icon">🎯</span> Idea Studio
+      </button>
+      <button class="tab-btn" data-tab="tab-production">
+        <span class="tab-icon">🎬</span> Production Suite & Scripts
+      </button>
+      <button class="tab-btn" data-tab="tab-week">
+        <span class="tab-icon">📅</span> 5-Day Trust Grid
+      </button>
+      <button class="tab-btn" data-tab="tab-memory">
+        <span class="tab-icon">🧠</span> Swarm & Memory
+      </button>
+      <button class="tab-btn" data-tab="tab-graph">
+        <span class="tab-icon">📚</span> Skill Graph (10 Docs)
+      </button>
+    </nav>
+
+    <!-- TAB 1: IDEA HUNTER -->
+    <main class="tab-content active" id="tab-hunter">
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Target Audience:</label>
+          <div class="btn-group" id="audienceFilterGroup">
+            <button class="btn-chip active" data-val="all">All Audiences</button>
+            <button class="btn-chip" data-val="couples">💍 Wedding Couples</button>
+            <button class="btn-chip" data-val="business">🏢 Big Business Owners</button>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <input type="text" id="huntTopicInput" placeholder="Filter or enter custom angle (e.g. vows audio, founder camera fear)...">
+          <button class="btn btn-accent" id="triggerHuntBtn">Hunt</button>
+        </div>
+      </div>
+
+      <div class="ideas-grid" id="ideasList">
+        <!-- Loaded dynamically -->
+      </div>
+    </main>
+
+    <!-- TAB 2: PRODUCTION SUITE -->
+    <section class="tab-content" id="tab-production">
+      <div class="production-layout">
+        <!-- LEFT: SCRIPT & HOOKS -->
+        <div class="production-main">
+          <div class="script-header-card">
+            <div class="script-meta-top">
+              <span class="pill pill-gold" id="scriptAudienceBadge">Wedding Couples</span>
+              <span class="pill pill-cyan" id="scriptFormatBadge">Talking Head Reel</span>
+              <span class="pill pill-purple">Layer: Middle (Trust)</span>
+            </div>
+            <h2 id="scriptTitleDisplay">The 3 Audio Catastrophes in Wedding Films (And How We Avoid Them)</h2>
+            <div class="pacing-note-box">
+              <span class="pulse-ring"></span>
+              <strong>Director's Note:</strong> <span id="scriptPacingDisplay">One Long Hold (6-12s holds, zero frantic cuts, let room audio breathe).</span>
+            </div>
+          </div>
+
+          <!-- 5 TRUST HOOKS -->
+          <div class="panel-box">
+            <div class="panel-box-header">
+              <h3>🎣 5 Tested Trust Hooks (Choose Your Opener)</h3>
+              <span class="hint-text">Ranked by thumb-stop curiosity without clickbait</span>
+            </div>
+            <div class="hooks-list" id="hooksOptionsContainer">
+              <!-- Loaded dynamically -->
+            </div>
+          </div>
+
+          <!-- FORMAT VIEW SELECTOR -->
+          <div class="format-view-selector">
+            <button class="view-chip active" data-view="view-talking-head">🎥 Talking Head Teleprompter</button>
+            <button class="view-chip" data-view="view-carousel">📑 5-Slide Carousel Breakdown</button>
+            <button class="view-chip" data-view="view-pov">👁️ POV Overlay & Caption</button>
+          </div>
+
+          <!-- VIEW: TALKING HEAD REEL -->
+          <div class="format-view-pane active" id="view-talking-head">
+            <div class="teleprompter-box">
+              <div class="teleprompter-header">
+                <span>Spoken Dialogue with Cinematography Cues</span>
+                <button class="btn-xs" id="copyScriptBtn">📋 Copy Script</button>
+              </div>
+              <div class="teleprompter-text" id="fullScriptDisplay">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+
+            <!-- SHOT LIST -->
+            <div class="panel-box mt-4">
+              <div class="panel-box-header">
+                <h3>🎬 Cinematic Shot List & Camera Instructions</h3>
+                <button class="btn-xs" id="copyShotListBtn">📋 Copy Shot List</button>
+              </div>
+              <div class="table-responsive">
+                <table class="shot-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Framing / Lens</th>
+                      <th>Camera Movement</th>
+                      <th>Duration</th>
+                      <th>Action & Description</th>
+                      <th>Audio Cue</th>
+                    </tr>
+                  </thead>
+                  <tbody id="shotListBody">
+                    <!-- Loaded dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIEW: 5-SLIDE CAROUSEL -->
+          <div class="format-view-pane" id="view-carousel">
+            <div class="carousel-preview-container" id="carouselContainer">
+              <!-- Loaded dynamically -->
+            </div>
+          </div>
+
+          <!-- VIEW: POV OVERLAY & CAPTION -->
+          <div class="format-view-pane" id="view-pov">
+            <div class="pov-preview-card" id="povContainer">
+              <!-- Loaded dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: CAPTION & PRODUCTION ACTIONS -->
+        <aside class="production-sidebar">
+          <div class="sidebar-box">
+            <div class="sidebar-header">
+              <h4>📝 Instagram Caption</h4>
+              <button class="btn-xs" id="copyCaptionBtn">Copy</button>
+            </div>
+            <textarea class="caption-editor" id="captionEditor" rows="12"></textarea>
+            
+            <div class="hashtag-section">
+              <label>Hashtags:</label>
+              <div class="hashtag-cloud" id="hashtagCloud">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-box mt-3">
+            <h4>⚡ Quick Generation</h4>
+            <p class="text-muted small">Switch format instantly or regenerate with new angles:</p>
+            <div class="quick-format-buttons">
+              <button class="btn btn-outline full-width mb-2" id="switchReelBtn">🎥 Generate as Reel</button>
+              <button class="btn btn-outline full-width mb-2" id="switchCarouselBtn">📑 Generate as Carousel</button>
+              <button class="btn btn-outline full-width" id="switchPovBtn">👁️ Generate as POV Value</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TAB 3: 5-DAY TRUST GRID -->
+    <section class="tab-content" id="tab-week">
+      <div class="week-header">
+        <div>
+          <h2>📅 5-Post Weekly Production Cadence</h2>
+          <p class="text-muted">Structured specifically for the <strong>Middle Layer (Trust & Knowledge)</strong> across Wedding Couples and Big Business Owners.</p>
+        </div>
+        <div class="week-actions">
+          <button class="btn btn-secondary" id="exportWeekMdBtn">📥 Export Markdown</button>
+          <button class="btn btn-primary" id="regenerateWeekBtn">🔄 Re-Plan Week</button>
+        </div>
+      </div>
+
+      <div class="week-grid" id="weekGridContainer">
+        <!-- 5 Days loaded dynamically -->
+      </div>
+    </section>
+
+    <!-- TAB 4: SWARM & MEMORY -->
+    <section class="tab-content" id="tab-memory">
+      <div class="memory-swarm-layout">
+        <div class="swarm-forge-panel">
+          <div class="panel-box-header">
+            <h3>🐝 SwarmForge Multi-Agent Pipeline</h3>
+            <span class="badge-harness">Durable Handoffs</span>
+          </div>
+
+          <div class="swarm-pipeline-visual">
+            <div class="pipeline-step">
+              <div class="step-num">01</div>
+              <div class="step-info">
+                <strong>Hunter Agent (Agent-Reach)</strong>
+                <span>Scans audience dilemmas, questions, and unvoiced anxieties</span>
+              </div>
+              <div class="step-badge active">Active</div>
+            </div>
+
+            <div class="pipeline-arrow">↓</div>
+
+            <div class="pipeline-step">
+              <div class="step-num">02</div>
+              <div class="step-info">
+                <strong>Hook Crafter (Content-Skills)</strong>
+                <span>Generates 5 distinct trust-building hooks with 0 clickbait</span>
+              </div>
+              <div class="step-badge active">Active</div>
+            </div>
+
+            <div class="pipeline-arrow">↓</div>
+
+            <div class="pipeline-step">
+              <div class="step-num">03</div>
+              <div class="step-info">
+                <strong>Scriptwriter Agent</strong>
+                <span>Drafts conversational dialogue with "One Long Hold" pacing</span>
+              </div>
+              <div class="step-badge active">Active</div>
+            </div>
+
+            <div class="pipeline-arrow">↓</div>
+
+            <div class="pipeline-step">
+              <div class="step-num">04</div>
+              <div class="step-info">
+                <strong>Director Agent (Ponytail)</strong>
+                <span>Defines shot lists and the signature [How I Wait] pause</span>
+              </div>
+              <div class="step-badge active">Active</div>
+            </div>
+
+            <div class="pipeline-arrow">↓</div>
+
+            <div class="pipeline-step">
+              <div class="step-num">05</div>
+              <div class="step-info">
+                <strong>Gatekeeper Agent</strong>
+                <span>Enforces NO fake/cheap promises and verifies pure education</span>
+              </div>
+              <div class="step-badge active">Enforcing</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memory-store-panel">
+          <div class="panel-box-header">
+            <h3>🧠 TencentDB Agent Memory Engine</h3>
+            <button class="btn-xs" id="addMemoryModalBtn">+ Add Rule</button>
+          </div>
+          <div class="memory-timeline" id="memoryTimeline">
+            <!-- Loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: SKILL GRAPH EXPLORER -->
+    <section class="tab-content" id="tab-graph">
+      <div class="skill-graph-layout">
+        <aside class="graph-sidebar">
+          <h4>Tree Navigator</h4>
+          <div class="graph-tree" id="graphTree">
+            <!-- Loaded dynamically -->
+          </div>
+        </aside>
+
+        <div class="graph-viewer">
+          <div class="graph-viewer-header">
+            <span class="file-path-badge" id="currentDocPath">content-skill-graph/index.md</span>
+          </div>
+          <div class="markdown-preview" id="markdownViewer">
+            <!-- Loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>⚙️ Harness API Configuration</h3>
+        <button class="close-btn" id="closeSettingsBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Integrate your DeepSeek or OpenAI API key to enable continuous live ideation and script generation. When left blank, the harness runs in high-precision Local Knowledge Engine mode.
+        </p>
+
+        <div class="form-group">
+          <label>API Key:</label>
+          <input type="password" id="apiKeyInput" placeholder="sk-..." autocomplete="off">
+          <span class="form-hint">Stored securely in local memory session.</span>
+        </div>
+
+        <div class="form-group">
+          <label>API Base URL:</label>
+          <input type="text" id="apiBaseUrlInput" value="https://api.deepseek.com/v1/chat/completions">
+        </div>
+
+        <div class="form-group">
+          <label>Model Name:</label>
+          <input type="text" id="modelInput" value="deepseek-chat">
+        </div>
+
+        <div class="form-group">
+          <label>Provider Mode:</label>
+          <select id="providerSelect">
+            <option value="deepseek">DeepSeek AI</option>
+            <option value="openai">OpenAI Compatible</option>
+            <option value="local">Local Knowledge Engine</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelSettingsBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveSettingsBtn">Save Configuration</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="appToast">Copied to clipboard!</div>
+
+  <script src="app.js"></script>
+</body>
+</html>

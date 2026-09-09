@@ -1,0 +1,78 @@
+[
+  {
+    "id": "mem-1788621237080-j7y70",
+    "timestamp": "2026-09-05T15:13:57.080Z",
+    "type": "script",
+    "audience": "couples",
+    "content": "Script: \"How to protect your vows audio in outdoor wind\" (reel format for couples). Hooks: There is one moment in every wedding ceremony that most videographers miss because they are staring at the bride.",
+    "tags": [
+      "reel",
+      "couples",
+      "script",
+      "middle-layer"
+    ]
+  },
+  {
+    "id": "mem-1788620949208-icj7y",
+    "timestamp": "2026-09-05T15:09:09.208Z",
+    "type": "script",
+    "audience": "couples",
+    "content": "Script: \"The 3 Audio Mistakes\" (reel format for couples). Hooks: There is one moment in every wedding ceremony that most videographers miss because they are staring at the bride.",
+    "tags": [
+      "reel",
+      "couples",
+      "script",
+      "middle-layer"
+    ]
+  },
+  {
+    "id": "rule-identity",
+    "timestamp": "2026-09-05T15:07:49.411Z",
+    "type": "rule",
+    "content": "Creator is an Entrepreneur who shoots and edits videos. The external one-line reputation is: \"Wedding content creator and entrepreneur\".",
+    "tags": [
+      "identity",
+      "positioning"
+    ]
+  },
+  {
+    "id": "rule-anti-hype",
+    "timestamp": "2026-09-05T15:07:49.412Z",
+    "type": "blacklist",
+    "content": "NEVER post cheap or fake promises. No quick-buck viral hacks, no hard sales pitches. Strictly educate, spread knowledge, and share fun.",
+    "tags": [
+      "integrity",
+      "anti-hype"
+    ]
+  },
+  {
+    "id": "rule-pacing",
+    "timestamp": "2026-09-05T15:07:49.412Z",
+    "type": "rule",
+    "content": "Cinematography style is \"One Long Hold\". Zero frantic cuts. Steady camera, intentional pauses, natural room audio, and real breathing room.",
+    "tags": [
+      "cinematography",
+      "pacing"
+    ]
+  },
+  {
+    "id": "rule-signature-beat",
+    "timestamp": "2026-09-05T15:07:49.412Z",
+    "type": "rule",
+    "content": "Must incorporate the signature [How I Wait] beat: showing quiet observation, waiting for raw unposed moments to naturally emerge.",
+    "tags": [
+      "craft",
+      "signature"
+    ]
+  },
+  {
+    "id": "rule-schedule-middle-layer",
+    "timestamp": "2026-09-05T15:07:49.412Z",
+    "type": "rule",
+    "content": "Weekly production goal: 5 posts per week focused primarily on the Middle Layer (Trust & Authority) for wedding couples and business owners.",
+    "tags": [
+      "schedule",
+      "funnel"
+    ]
+  }
+]

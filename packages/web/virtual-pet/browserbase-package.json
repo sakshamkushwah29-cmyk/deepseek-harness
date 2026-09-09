@@ -1,0 +1,22 @@
+{
+  "name": "@deepseek-ai/dsh-virtual-pet-browserbase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pet:feed": "tsx src/browserbase/feed-pet.ts",
+    "pet:play": "tsx src/browserbase/play-pet.ts",
+    "pet:check": "tsx src/browserbase/check-pet.ts",
+    "pet:full-care": "tsx src/browserbase/full-care.ts"
+  },
+  "dependencies": {
+    "@browserbasehq/stagehand": "^1.0.0",
+    "@browserbasehq/sdk": "^2.0.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0",
+    "tsx": "^4.16.0"
+  }
+}

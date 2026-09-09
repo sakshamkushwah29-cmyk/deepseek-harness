@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📋 Habit Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📋 Habit Tracker</h1>
+      <div class="streak-badge" id="streakBadge">🔥 0 day streak</div>
+    </header>
+
+    <main>
+      <section class="add-habit-section">
+        <form id="habitForm" class="habit-form">
+          <div class="form-row">
+            <input type="text" id="habitName" placeholder="Habit name (e.g., Exercise, Read, Meditate)" required maxlength="50">
+            <select id="habitFrequency" required>
+              <option value="daily">📅 Daily</option>
+              <option value="weekdays">📅 Weekdays only</option>
+              <option value="weekends">📅 Weekends only</option>
+              <option value="custom">🔧 Custom days</option>
+            </select>
+          </div>
+          <div class="custom-days" id="customDays" style="display: none;">
+            <label><input type="checkbox" value="0"> Sun</label>
+            <label><input type="checkbox" value="1"> Mon</label>
+            <label><input type="checkbox" value="2"> Tue</label>
+            <label><input type="checkbox" value="3"> Wed</label>
+            <label><input type="checkbox" value="4"> Thu</label>
+            <label><input type="checkbox" value="5"> Fri</label>
+            <label><input type="checkbox" value="6"> Sat</label>
+          </div>
+          <div class="form-row">
+            <input type="number" id="habitTarget" placeholder="Target (times per period)" min="1" max="10" value="1">
+            <select id="habitIcon">
+              <option value="🏃">🏃 Exercise</option>
+              <option value="📖">📖 Read</option>
+              <option value="🧘">🧘 Meditate</option>
+              <option value="💧">💧 Water</option>
+              <option value="🥗">🥗 Eat Healthy</option>
+              <option value="💤">💤 Sleep</option>
+              <option value="📝">📝 Journal</option>
+              <option value="💻">💻 Code</option>
+              <option value="🎸">🎸 Practice</option>
+              <option value="🧹">🧹 Clean</option>
+              <option value="🎯">🎯 Custom</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary">+ Add Habit</button>
+        </form>
+      </section>
+
+      <section class="habits-section">
+        <div class="section-header">
+          <h2>Today's Habits</h2>
+          <div class="date-nav">
+            <button id="prevDay" aria-label="Previous day">‹</button>
+            <span id="currentDate"></span>
+            <button id="nextDay" aria-label="Next day">›</button>
+            <button id="todayBtn" class="today-btn">Today</button>
+          </div>
+        </div>
+        <div class="habits-list" id="habitsList"></div>
+        <div class="empty-state" id="emptyState">
+          <p>🌱 No habits yet. Add your first habit above!</p>
+        </div>
+      </section>
+
+      <section class="stats-section">
+        <h2>📊 Progress</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="todayComplete">0</div>
+            <div class="stat-label">Completed Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="todayTotal">0</div>
+            <div class="stat-label">Total Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="completionRate">0%</div>
+            <div class="stat-label">Completion Rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="longestStreak">0</div>
+            <div class="stat-label">Longest Streak</div>
+          </div>
+        </div>
+
+        <div class="weekly-chart" id="weeklyChart"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" id="deleteModal">
+    <div class="modal">
+      <p>Delete "<span id="deleteHabitName"></span>"?</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="cancelDelete">Cancel</button>
+        <button class="btn-danger" id="confirmDelete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
