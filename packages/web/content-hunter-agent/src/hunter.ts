@@ -1,10 +1,9 @@
-import type { ContentIdea, TargetAudience, AppConfig } from './types.js';
-import { memoryStore } from './memory.js';
+import type { ContentIdea, TargetAudience, AppConfig } from './types.js'
 
 interface HuntParams {
-  audience?: TargetAudience | 'all';
-  focusAngle?: string;
-  count?: number;
+  audience?: TargetAudience | 'all'
+  focusAngle?: string
+  count?: number
 }
 
 const SEED_IDEAS: ContentIdea[] = [
@@ -18,7 +17,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'reel',
     whyItBuildsTrust: 'Educates couples on microphone placement during vows and wind resistance without insulting other vendors.',
     resonanceScore: 96,
-    tags: ['audio', 'wedding-vows', 'mistakes-to-avoid', 'trust']
+    tags: ['audio', 'wedding-vows', 'mistakes-to-avoid', 'trust'],
   },
   {
     id: 'idea-w-2',
@@ -29,7 +28,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'reel',
     whyItBuildsTrust: 'Removes the terror of feeling stiff or posed all day by showing patient cinema-verite observation.',
     resonanceScore: 98,
-    tags: ['how-i-wait', 'unposed', 'candids', 'cinematography']
+    tags: ['how-i-wait', 'unposed', 'candids', 'cinematography'],
   },
   {
     id: 'idea-w-3',
@@ -40,7 +39,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'carousel',
     whyItBuildsTrust: 'Positions the creator as an industry advocate who helps couples avoid contract traps and delivery delays.',
     resonanceScore: 94,
-    tags: ['carousel', 'contracts', 'pricing-truth', 'save-worthy']
+    tags: ['carousel', 'contracts', 'pricing-truth', 'save-worthy'],
   },
   {
     id: 'idea-w-4',
@@ -51,7 +50,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'pov',
     whyItBuildsTrust: 'Demonstrates deep sensitivity to sacred family moments rather than just showy equipment.',
     resonanceScore: 99,
-    tags: ['pov-overlay', 'family-emotion', 'deep-caption']
+    tags: ['pov-overlay', 'family-emotion', 'deep-caption'],
   },
   {
     id: 'idea-w-5',
@@ -62,7 +61,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'reel',
     whyItBuildsTrust: 'Shows why archival color grading ensures the film looks timeless 25 years from now.',
     resonanceScore: 91,
-    tags: ['color-grading', 'timeless', 'technical-truth']
+    tags: ['color-grading', 'timeless', 'technical-truth'],
   },
 
   // Big Business Owners (Middle Layer / Trust)
@@ -75,7 +74,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'carousel',
     whyItBuildsTrust: 'Speaks entrepreneur-to-entrepreneur about customer psychology and authentic storytelling vs glossy fluff.',
     resonanceScore: 97,
-    tags: ['roi', 'business-video', 'carousel', 'marketing']
+    tags: ['roi', 'business-video', 'carousel', 'marketing'],
   },
   {
     id: 'idea-b-2',
@@ -86,7 +85,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'reel',
     whyItBuildsTrust: 'Directly tackles the executive fear of appearing robotic or uncharismatic on camera.',
     resonanceScore: 95,
-    tags: ['camera-confidence', 'leadership', 'talking-head']
+    tags: ['camera-confidence', 'leadership', 'talking-head'],
   },
   {
     id: 'idea-b-3',
@@ -97,7 +96,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'reel',
     whyItBuildsTrust: 'Proves how unscripted b-roll and authentic interaction creates brand authority.',
     resonanceScore: 93,
-    tags: ['how-i-wait', 'corporate-doc', 'b-roll']
+    tags: ['how-i-wait', 'corporate-doc', 'b-roll'],
   },
   {
     id: 'idea-b-4',
@@ -108,7 +107,7 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'pov',
     whyItBuildsTrust: 'Highlights the cultural shift away from hard sales pitches toward educational brand equity.',
     resonanceScore: 92,
-    tags: ['pov-overlay', 'brand-equity', 'caption-value']
+    tags: ['pov-overlay', 'brand-equity', 'caption-value'],
   },
   {
     id: 'idea-b-5',
@@ -119,26 +118,26 @@ const SEED_IDEAS: ContentIdea[] = [
     recommendedFormat: 'carousel',
     whyItBuildsTrust: 'Shares the exact narrative framework that makes prospective enterprise clients trust your service.',
     resonanceScore: 96,
-    tags: ['case-study', 'framework', 'carousel-blueprint']
-  }
-];
+    tags: ['case-study', 'framework', 'carousel-blueprint'],
+  },
+]
 
 export async function huntIdeas(params: HuntParams, config?: AppConfig): Promise<ContentIdea[]> {
-  const { audience = 'all', focusAngle, count = 6 } = params;
+  const { audience = 'all', focusAngle, count = 6 } = params
 
   // Filter seed ideas based on audience
-  let results = SEED_IDEAS.filter(idea => {
-    if (audience === 'all') return true;
-    return idea.audience === audience || idea.audience === 'hybrid';
-  });
+  let results = SEED_IDEAS.filter((idea) => {
+    if (audience === 'all') return true
+    return idea.audience === audience || idea.audience === 'hybrid'
+  })
 
   if (focusAngle && focusAngle.trim().length > 0) {
-    const q = focusAngle.toLowerCase();
-    results = results.filter(i => 
-      i.title.toLowerCase().includes(q) || 
+    const q = focusAngle.toLowerCase()
+    results = results.filter(i =>
+      i.title.toLowerCase().includes(q) ||
       i.angle.toLowerCase().includes(q) ||
-      i.tags.some(t => t.toLowerCase().includes(q))
-    );
+      i.tags.some(t => t.toLowerCase().includes(q)),
+    )
     if (results.length === 0) {
       // Dynamic fallback idea based on custom angle
       results = [
@@ -151,57 +150,57 @@ export async function huntIdeas(params: HuntParams, config?: AppConfig): Promise
           recommendedFormat: 'reel',
           whyItBuildsTrust: `Examines ${focusAngle} from a grounded craftsman perspective with zero hype.`,
           resonanceScore: 94,
-          tags: [focusAngle.toLowerCase().replace(/\s+/g, '-'), 'middle-layer', 'trust']
+          tags: [focusAngle.toLowerCase().replace(/\s+/g, '-'), 'middle-layer', 'trust'],
         },
-        ...SEED_IDEAS.slice(0, 3)
-      ];
+        ...SEED_IDEAS.slice(0, 3),
+      ]
     }
   }
 
   // If user provided LLM config and wants live generation
   if (config?.apiKey && config.apiKey.trim().length > 0) {
     try {
-      const generated = await callLlmIdeaHunt(params, config);
+      const generated = await callLlmIdeaHunt(params, config)
       if (generated && generated.length > 0) {
-        return generated;
+        return generated
       }
     } catch (err) {
-      console.warn('Live LLM Hunt failed, returning curated knowledge graph results:', err);
+      console.warn('Live LLM Hunt failed, returning curated knowledge graph results:', err)
     }
   }
 
   // Return formatted results
-  return results.slice(0, count);
+  return results.slice(0, count)
 }
 
 async function callLlmIdeaHunt(params: HuntParams, config: AppConfig): Promise<ContentIdea[] | null> {
-  const endpoint = config.apiBaseUrl || 'https://api.deepseek.com/v1/chat/completions';
+  const endpoint = config.apiBaseUrl || 'https://api.deepseek.com/v1/chat/completions'
   const prompt = `You are the Content Hunter Agent for an Instagram video creator & entrepreneur who shoots and edits videos for wedding couples and big business owners.
 Persona: Knowledgeable, calm authority, "one long hold" cinematography, "how I wait", no cheap or fake promises, pure education & fun.
 Target: ${params.audience ?? 'all'} (focus: ${params.focusAngle || 'Middle layer trust content'})
 Generate 4 ideas in JSON array format matching:
-[{"id": "idea-...", "title": "...", "angle": "...", "audience": "couples"|"business", "layer": "middle", "recommendedFormat": "reel"|"carousel"|"pov", "whyItBuildsTrust": "...", "resonanceScore": 95, "tags": ["..."]}]`;
+[{"id": "idea-...", "title": "...", "angle": "...", "audience": "couples"|"business", "layer": "middle", "recommendedFormat": "reel"|"carousel"|"pov", "whyItBuildsTrust": "...", "resonanceScore": 95, "tags": ["..."]}]`
 
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${config.apiKey}`
+      'Authorization': `Bearer ${config.apiKey}`,
     },
     body: JSON.stringify({
       model: config.model || 'deepseek-chat',
       messages: [
         { role: 'system', content: 'You are an expert video content strategist specializing in high-trust Instagram reels and carousels.' },
-        { role: 'user', content: prompt }
+        { role: 'user', content: prompt },
       ],
-      response_format: { type: 'json_object' }
-    })
-  });
+      response_format: { type: 'json_object' },
+    }),
+  })
 
-  if (!res.ok) return null;
-  const data = await res.json() as { choices?: Array<{ message?: { content?: string } }> };
-  const content = data.choices?.[0]?.message?.content;
-  if (!content) return null;
-  const parsed = JSON.parse(content);
-  return Array.isArray(parsed) ? parsed : (parsed.ideas || null);
+  if (!res.ok) return null
+  const data = await res.json() as { choices?: Array<{ message?: { content?: string } }> }
+  const content = data.choices?.[0]?.message?.content
+  if (!content) return null
+  const parsed = JSON.parse(content)
+  return Array.isArray(parsed) ? parsed : (parsed.ideas || null)
 }
